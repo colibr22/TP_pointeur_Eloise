@@ -1,14 +1,14 @@
 #include <stdio.h>
 
-typedef struct{
+typedef struct {
     const char *option;
 } Menu;
 
-typedef struct{
+typedef struct {
     const char *nom;
-    Menu* menus;
+    Menu *menus;
     int nb_menus;
-}Application;
+} Application;
 
 void displayMenu(const Application* app) {
     printf("--- %s ---\n", app->nom);
@@ -17,18 +17,17 @@ void displayMenu(const Application* app) {
     }
     printf("Choisissez une option (0 pour quitter) : ");
 }
+
 void runApplication(const Application* app) {
     int choice = -1;
-     while (choice != 0) {
+    while (choice != 0) {
         displayMenu(app);
         scanf("%d", &choice);
         if (choice == 0) {
             printf("Vous avez quitté l'application.\n");
-        }
-        else if (choice > 0 && choice <= app->nb_menus) {
+        } else if (choice > 0 && choice <= app->nb_menus) {
             printf("Vous avez sélectionné : %s\n", app->menus[choice - 1].option);
-        }
-        else {
+        } else {
             printf("Option invalide, veuillez choisir une option correcte.\n");
         }
     }
@@ -40,7 +39,7 @@ int main() {
         {"Prendre une photo"}
     };
     Application photoApp = {"Photos", photoMenus, 2};
-
-    displayMenu(&photoApp);
+    runApplication(&photoApp);
+    
     return 0;
 }
