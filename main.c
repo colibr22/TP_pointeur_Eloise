@@ -25,21 +25,55 @@ void runApplication(const Application* app) {
         scanf("%d", &choice);
         if (choice == 0) {
             printf("Vous avez quitté l'application.\n");
-        } else if (choice > 0 && choice <= app->nb_menus) {
+        } 
+        else if (choice > 0 && choice <= app->nb_menus) {
             printf("Vous avez sélectionné : %s\n", app->menus[choice - 1].option);
-        } else {
+        } 
+        else {
             printf("Option invalide, veuillez choisir une option correcte.\n");
         }
     }
 }
 
+void runPhone(Application* app1, Application* app2) {
+    int choice = -1;
+    while (choice != 0) {
+        printf("--- Applications ---\n");
+        printf("1. %s\n", app1->nom);
+        printf("2. %s\n", app2->nom);
+        printf("0. Quitter\n");
+        printf("Choisissez une application (0 pour quitter) : ");
+        scanf("%d", &choice);
+        if (choice == 0) {
+            printf("Vous avez quitté le téléphone.\n");
+        } 
+        else if (choice == 1) {
+            printf("Lancement de l'application %s...\n", app1->nom);
+            runApplication(app1);
+        } 
+        else if (choice == 2) {
+            printf("Lancement de l'application %s...\n", app2->nom);
+            runApplication(app2);
+        } 
+        else {
+            printf("Option invalide, veuillez choisir une application correcte.\n");
+        }
+    }
+}
 int main() {
     Menu photoMenus[] = {
         {"Regarder une photo"},
         {"Prendre une photo"}
     };
     Application photoApp = {"Photos", photoMenus, 2};
-    runApplication(&photoApp);
+
+    Menu messageMenus[] = {
+        {"Lire un message"},
+        {"Envoyer un message"}
+    };
+    Application messageApp = {"Messages", messageMenus, 2};
+
+    runPhone(&photoApp, &messageApp);
     
     return 0;
 }
