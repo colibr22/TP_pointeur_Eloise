@@ -17,6 +17,22 @@ void displayMenu(const Application* app) {
     }
     printf("Choisissez une option (0 pour quitter) : ");
 }
+void runApplication(const Application* app) {
+    int choice = -1;
+     while (choice != 0) {
+        displayMenu(app);
+        scanf("%d", &choice);
+        if (choice == 0) {
+            printf("Vous avez quitté l'application.\n");
+        }
+        else if (choice > 0 && choice <= app->nb_menus) {
+            printf("Vous avez sélectionné : %s\n", app->menus[choice - 1].option);
+        }
+        else {
+            printf("Option invalide, veuillez choisir une option correcte.\n");
+        }
+    }
+}
 
 int main() {
     Menu photoMenus[] = {
