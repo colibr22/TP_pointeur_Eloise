@@ -15,5 +15,7 @@ int main() {
         {"Regarder une photo"},
         {"Prendre une photo"}
     };
+    Application photoApp = {"Photos", photoMenus, 2};
+    
     return 0;
 }
