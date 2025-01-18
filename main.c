@@ -44,7 +44,12 @@ void updateMenu(Application* app, int menuIndex, const char* newOption) {
     }
 }
 
-
+void updateApplication(Application* app, const char* newName, Menu* newMenus, int newMenuCount) {
+    app->nom = newName;
+    app->menus = newMenus;
+    app->nb_menus = newMenuCount;
+    printf("Application modifiée avec succès !\n");
+}
 
 void runPhone(Application* app1, Application* app2) {
     int choice = -1;
