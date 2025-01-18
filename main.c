@@ -35,6 +35,17 @@ void runApplication(const Application* app) {
     }
 }
 
+void updateMenu(Application* app, int menuIndex, const char* newOption) {
+    if (menuIndex >= 0 && menuIndex < app->nb_menus) {
+        app->menus[menuIndex].option = newOption;
+        printf("Option modifiée avec succès !\n");
+    } else {
+        printf("Index invalide.\n");
+    }
+}
+
+
+
 void runPhone(Application* app1, Application* app2) {
     int choice = -1;
     while (choice != 0) {
@@ -60,6 +71,9 @@ void runPhone(Application* app1, Application* app2) {
         }
     }
 }
+
+
+
 int main() {
     Menu photoMenus[] = {
         {"Regarder une photo"},
